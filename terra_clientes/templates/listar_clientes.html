@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar clientes</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de clientes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Localidad</th>
+                <th>Provincia</th>
+                <th>País</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.localidad }}</td>
+                    <td>{{ cliente.provincia }}</td>
+                    <td>{{ cliente.pais }}</td>
+
+                </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+    
+    <a href="{% url 'crear_cliente' %}"> Alta Cliente </a>
+</body>
+</html>
+
