@@ -1,0 +1,174 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Welcome Banner -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg p-6 text-white">
+        <h1 class="text-3xl font-bold mb-2">
+            ¡Bienvenido, {{ user.get_full_name|default:user.username }}! 👋
+        </h1>
+        <p class="text-blue-100">
+            Panel de control - {{ user.get_rol_display }}
+        </p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Ventas del día -->
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Ventas del Día</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">$0</p>
+                    <p class="text-green-600 text-sm mt-1">
+                        <i class="fas fa-arrow-up"></i> 0% vs ayer
+                    </p>
+                </div>
+                <div class="bg-green-100 rounded-full p-4">
+                    <i class="fas fa-dollar-sign text-green-600 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Productos -->
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Productos</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">0</p>
+                    <p class="text-gray-600 text-sm mt-1">
+                        En catálogo
+                    </p>
+                </div>
+                <div class="bg-blue-100 rounded-full p-4">
+                    <i class="fas fa-box text-blue-600 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clientes -->
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-purple-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Clientes</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">0</p>
+                    <p class="text-gray-600 text-sm mt-1">
+                        Registrados
+                    </p>
+                </div>
+                <div class="bg-purple-100 rounded-full p-4">
+                    <i class="fas fa-users text-purple-600 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stock Bajo -->
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-orange-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Alertas Stock</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">0</p>
+                    <p class="text-orange-600 text-sm mt-1">
+                        Requieren atención
+                    </p>
+                </div>
+                <div class="bg-orange-100 rounded-full p-4">
+                    <i class="fas fa-exclamation-triangle text-orange-600 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions & Recent Activity -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Quick Actions -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                <i class="fas fa-bolt mr-2 text-yellow-500"></i>
+                Acciones Rápidas
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex flex-col items-center justify-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition cursor-not-allowed opacity-50">
+                    <i class="fas fa-cash-register text-blue-600 text-2xl mb-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Nueva Venta</span>
+                    <span class="text-xs text-yellow-600 mt-1">Próximamente</span>
+                </button>
+                <button class="flex flex-col items-center justify-center p-4 bg-green-50 hover:bg-green-100 rounded-lg transition cursor-not-allowed opacity-50">
+                    <i class="fas fa-user-plus text-green-600 text-2xl mb-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Nuevo Cliente</span>
+                    <span class="text-xs text-yellow-600 mt-1">Próximamente</span>
+                </button>
+                <button class="flex flex-col items-center justify-center p-4 bg-purple-50 hover:bg-purple-100 rounded-lg transition cursor-not-allowed opacity-50">
+                    <i class="fas fa-box-open text-purple-600 text-2xl mb-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Nuevo Producto</span>
+                    <span class="text-xs text-yellow-600 mt-1">Próximamente</span>
+                </button>
+                <button class="flex flex-col items-center justify-center p-4 bg-orange-50 hover:bg-orange-100 rounded-lg transition cursor-not-allowed opacity-50">
+                    <i class="fas fa-chart-bar text-orange-600 text-2xl mb-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Ver Reportes</span>
+                    <span class="text-xs text-yellow-600 mt-1">Próximamente</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+                Estado del Sistema
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                        <span class="text-sm font-medium text-gray-700">Base de Datos</span>
+                    </div>
+                    <span class="text-xs font-semibold text-green-600 bg-green-100 px-3 py-1 rounded-full">
+                        Conectada
+                    </span>
+                </div>
+
+                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-exclamation-circle text-yellow-600 mr-3"></i>
+                        <span class="text-sm font-medium text-gray-700">Módulos Activos</span>
+                    </div>
+                    <span class="text-xs font-semibold text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full">
+                        2 de 9
+                    </span>
+                </div>
+
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <p class="text-sm text-blue-800">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <strong>Fase 1 completada:</strong> Sistema base configurado correctamente. Próximos módulos en desarrollo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Development Info -->
+    <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg shadow p-6 border border-purple-200">
+        <h3 class="text-lg font-semibold text-gray-900 mb-3">
+            <i class="fas fa-rocket mr-2 text-purple-600"></i>
+            Desarrollo del Sistema
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="text-center p-4 bg-white rounded-lg">
+                <p class="text-2xl font-bold text-green-600">✓ Fase 1</p>
+                <p class="text-sm text-gray-600 mt-1">Fundación</p>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <p class="text-2xl font-bold text-gray-400">○ Fase 2</p>
+                <p class="text-sm text-gray-600 mt-1">Datos Maestros</p>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <p class="text-2xl font-bold text-gray-400">○ Fase 3</p>
+                <p class="text-sm text-gray-600 mt-1">Operaciones</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
