@@ -15,6 +15,9 @@ urlpatterns = [
     # Apps
     path('', include('apps.core.urls')),
     path('usuarios/', include('apps.usuarios.urls')),
+    path('clientes/', include('apps.clientes.urls')),
+    path('proveedores/', include('apps.proveedores.urls')),
+    path('productos/', include('apps.productos.urls')),
 
     # Redirect root to dashboard
     path('', RedirectView.as_view(pattern_name='core:dashboard'), name='home'),

@@ -49,19 +49,19 @@
 
                 <!-- Clientes -->
                 <li>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg opacity-50 cursor-not-allowed">
+                    <a href="{% url 'clientes:listar' %}" class="sidebar-link flex items-center px-4 py-3 rounded-lg hover:bg-white hover:bg-opacity-10">
                         <i class="fas fa-users w-5"></i>
                         <span class="ml-3">Clientes</span>
-                        <span class="ml-auto text-xs bg-yellow-500 px-2 py-1 rounded">Próximamente</span>
+                        <span class="ml-auto text-xs bg-green-500 px-2 py-1 rounded">Nuevo</span>
                     </a>
                 </li>
 
                 <!-- Productos -->
                 <li>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg opacity-50 cursor-not-allowed">
+                    <a href="{% url 'productos:listar' %}" class="sidebar-link flex items-center px-4 py-3 rounded-lg hover:bg-white hover:bg-opacity-10">
                         <i class="fas fa-box w-5"></i>
                         <span class="ml-3">Productos</span>
-                        <span class="ml-auto text-xs bg-yellow-500 px-2 py-1 rounded">Próximamente</span>
+                        <span class="ml-auto text-xs bg-green-500 px-2 py-1 rounded">Nuevo</span>
                     </a>
                 </li>
 
@@ -77,10 +77,10 @@
                 <!-- Proveedores -->
                 {% if user.es_administrador %}
                 <li>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg opacity-50 cursor-not-allowed">
+                    <a href="{% url 'proveedores:listar' %}" class="sidebar-link flex items-center px-4 py-3 rounded-lg hover:bg-white hover:bg-opacity-10">
                         <i class="fas fa-truck w-5"></i>
                         <span class="ml-3">Proveedores</span>
-                        <span class="ml-auto text-xs bg-yellow-500 px-2 py-1 rounded">Próximamente</span>
+                        <span class="ml-auto text-xs bg-green-500 px-2 py-1 rounded">Nuevo</span>
                     </a>
                 </li>
                 {% endif %}
